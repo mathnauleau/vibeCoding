@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathieu Nauleau - UX Designer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.4;
+            color: #333;
+            background-color: #f9f9f9;
+            padding: 40px 20px;
+        }
+
+        .resume-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .header-info {
+            flex: 1;
+        }
+
+        .name {
+            font-size: 32px;
+            font-weight: bold;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .title {
+            font-size: 16px;
+            color: #4A90E2;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .avatar {
+            width: 80px;
+            height: 80px;
+            background: #4A90E2;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+
+        .left-column {
+            padding-right: 15px;
+        }
+
+        .right-column {
+            padding-left: 15px;
+            border-left: 1px solid #e0e0e0;
+        }
+
+        .section {
+            margin-bottom: 24px;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+            padding-bottom: 3px;
+            border-bottom: 2px solid #1a1a1a;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .job, .education-item {
+            margin-bottom: 18px;
+        }
+
+        .job-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 3px;
+        }
+
+        .company {
+            color: #4A90E2;
+            font-weight: 500;
+            margin-bottom: 3px;
+        }
+
+        .job-meta {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 6px;
+        }
+
+        .job-meta::before {
+            content: "📅 ";
+            margin-right: 4px;
+        }
+
+        .location::before {
+            content: "📍 ";
+            margin-left: 12px;
+            margin-right: 4px;
+        }
+
+        .job-description {
+            margin-left: 0;
+        }
+
+        .job-description li {
+            margin-bottom: 3px;
+            font-size: 13px;
+            color: #555;
+            line-height: 1.3;
+        }
+
+        .summary-text {
+            font-size: 13px;
+            color: #555;
+            line-height: 1.4;
+            margin-bottom: 16px;
+        }
+
+        .certification-link, .course-link {
+            color: #4A90E2;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 13px;
+        }
+
+        .certification-link:hover, .course-link:hover {
+            text-decoration: underline;
+        }
+
+        .languages {
+            margin-bottom: 16px;
+        }
+
+        .language {
+            margin-bottom: 10px;
+        }
+
+        .language-name {
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 3px;
+            font-size: 13px;
+        }
+
+        .language-level {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 3px;
+        }
+
+        .skill-dots {
+            display: flex;
+            gap: 3px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #4A90E2;
+        }
+
+        .dot.empty {
+            background: #e0e0e0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+
+        .skill-item {
+            background: #f5f5f5;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #555;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .additional-skill {
+            background: #f5f5f5;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #555;
+            text-align: center;
+            font-weight: 500;
+            display: inline-block;
+        }
+
+        .degree-name {
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 3px;
+            font-size: 14px;
+        }
+
+        .school-name {
+            color: #4A90E2;
+            font-weight: 500;
+            margin-bottom: 3px;
+            font-size: 13px;
+        }
+
+        .education-meta {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 6px;
+        }
+
+        .education-meta::before {
+            content: "📅 ";
+            margin-right: 4px;
+        }
+
+        /* Print Styles - This is the key addition */
+        @media print {
+            body {
+                background-color: white;
+                padding: 0;
+                margin: 0;
+                font-size: 12px;
+                line-height: 1.3;
+            }
+
+            .resume-container {
+                max-width: none;
+                width: 100%;
+                padding: 20px;
+                box-shadow: none;
+                border-radius: 0;
+                margin: 0;
+                background: white;
+            }
+
+            .header {
+                margin-bottom: 20px;
+                page-break-inside: avoid;
+            }
+
+            .name {
+                font-size: 28px;
+            }
+
+            .main-content {
+                display: grid;
+                grid-template-columns: 65% 35%;
+                gap: 20px;
+                page-break-inside: avoid;
+            }
+
+            .section {
+                margin-bottom: 16px;
+                page-break-inside: avoid;
+            }
+
+            .section-title {
+                font-size: 14px;
+                margin-bottom: 8px;
+            }
+
+            .job, .education-item {
+                margin-bottom: 12px;
+                page-break-inside: avoid;
+            }
+
+            .job-description li {
+                font-size: 11px;
+                line-height: 1.2;
+                margin-bottom: 2px;
+            }
+
+            .summary-text {
+                font-size: 11px;
+                line-height: 1.3;
+            }
+
+            /* Ensure colors print well */
+            .avatar {
+                background: #666 !important;
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+            }
+
+            .section-title {
+                border-bottom-color: #333 !important;
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+            }
+
+            .dot {
+                background: #333 !important;
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+            }
+
+            .skill-item, .additional-skill {
+                background: #f0f0f0 !important;
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+            }
+
+            /* Hide elements that don't print well */
+            .contact-item::before {
+                display: none;
+            }
+
+            .job-meta::before,
+            .education-meta::before {
+                display: none;
+            }
+
+            .location::before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .right-column {
+                padding-left: 0;
+                border-left: none;
+                border-top: 1px solid #e0e0e0;
+                padding-top: 20px;
+            }
+            
+            .header {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <div class="header">
+            <div class="header-info">
+                <h1 class="name">MATHIEU NAULEAU</h1>
+                <div class="title">UX designer</div>
+                <div class="contact-info">
+                    <div class="contact-item">📞 +31616705280</div>
+                    <div class="contact-item">✉️ math.nauleau@gmail.com</div>
+                    <div class="contact-item">📍 Amsterdam</div>
+                </div>
+            </div>
+            <div class="avatar">MN</div>
+        </div>
+
+        <div class="main-content">
+            <div class="left-column">
+                <div class="section">
+                    <h2 class="section-title">Experience</h2>
+                    
+                    <div class="job">
+                        <div class="job-title">UX designer</div>
+                        <div class="company">Ahold Delhaize</div>
+                        <div class="job-meta">
+                            2021 <span class="location">Zaandam</span>
+                        </div>
+                        <ul class="job-description">
+                            <li>Full-time member of the Albert Heijn Design System team</li>
+                            <li>Enabled more than 20 tech squads by improving the overall consistency and accessibility, while significantly reducing development time & cost</li>
+                            <li>Principal system designer for a multibrand App: Gall&Gall gained 11K App customers and increased revenue by ~160K€ in 3 months</li>
+                            <li>Etos gained 54K App customers and increased revenue by ~570K€ in 6 months</li>
+                            <li>Principal designer on AH Compact. The conversion increased by 8%, and revenue increased by 13% in the last year</li>
+                            <li>Principal designer on AH Overlijers. This proposition saved about 1,7K tons of waste</li>
+                            <li>Overall, involved in the UX Process from the discovery to the implementation</li>
+                        </ul>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-title">Service designer</div>
+                        <div class="company">Safran Cabin</div>
+                        <div class="job-meta">
+                            2020 <span class="location">Alkmaar</span>
+                        </div>
+                        <ul class="job-description">
+                            <li>Strategic project about the inflight service ecosystem</li>
+                            <li>Designed at the product, service & system level with an active role from the initial context to the final deliverable</li>
+                            <li>Visualized complex service concepts into structured and clear visuals</li>
+                        </ul>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-title">Industrial & UX designer</div>
+                        <div class="company">Pezy Group</div>
+                        <div class="job-meta">
+                            01/2015 - 12/2020 <span class="location">Amsterdam</span>
+                        </div>
+                        <ul class="job-description">
+                            <li>Innovated in a wide variety of projects from product design to User interfaces, graphic design, branding & packaging</li>
+                            <li>Worked with start-ups and multinationals</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">Education</h2>
+                    
+                    <div class="education-item">
+                        <div class="degree-name">Master in industrial design</div>
+                        <div class="school-name">L'École de design Nantes Atlantique</div>
+                        <div class="education-meta">09/2010 - 05/2015 📍 Fr</div>
+                    </div>
+
+                    <div class="education-item">
+                        <div class="degree-name">Bachelor</div>
+                        <div class="school-name">Milwaukee Institute of Art & Design</div>
+                        <div class="education-meta">01/2013 - 12/2013 📍 Milwaukee, USA</div>
+                    </div>
+
+                    <div class="education-item">
+                        <div class="degree-name">Product Management & Strategy</div>
+                        <div class="school-name">School or University</div>
+                        <div class="education-meta">10/2023 - 12/2023 📍 Location</div>
+                        <ul class="job-description">
+                            <li>Product Management & Strategy ()</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-column">
+                <div class="section">
+                    <h2 class="section-title">Summary</h2>
+                    <div class="summary-text">
+                        <strong>SENIOR PRODUCT DESIGNER</strong> My 9 years of design experience let me tackle complex challenges at the product, service, and system level in multi-disciplinary teams to make a positive impact on people and business. With elegant digital solutions, I aim for simplicity beyond complexity. In my spare time, I like to cycle, sketch, and practice woodworking.
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">Certification</h2>
+                    <a href="#" class="certification-link">UX Professional Diploma</a>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">Training / Courses</h2>
+                    <a href="#" class="course-link">Building the right things</a>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">Languages</h2>
+                    <div class="languages">
+                        <div class="language">
+                            <div class="language-name">French</div>
+                            <div class="language-level">Advanced</div>
+                            <div class="skill-dots">
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot empty"></div>
+                            </div>
+                        </div>
+                        <div class="language">
+                            <div class="language-name">English</div>
+                            <div class="language-level">Advanced</div>
+                            <div class="skill-dots">
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot"></div>
+                                <div class="dot empty"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">Skills</h2>
+                    <div class="skills-grid">
+                        <div class="skill-item">Figma</div>
+                        <div class="skill-item">GitHub</div>
+                        <div class="skill-item">Sketch</div>
+                        <div class="skill-item">Gmail</div>
+                    </div>
+                    <div class="additional-skill">AB Testing</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
