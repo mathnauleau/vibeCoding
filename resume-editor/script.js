@@ -3,10 +3,10 @@
         personal: {
             fullName: 'MATHIEU NAULEAU',
             jobTitle: 'UX designer',
-            phone: '+31616705280',
-            email: 'math.nauleau@gmail.com',
-            location: 'Amsterdam',
-            initials: 'MN'
+            phone: '+31612345678',
+            email: 'hello@gmail.com',
+            location: 'San Francisco',
+            initials: 'AB'
         },
         summary: 'SENIOR PRODUCT DESIGNER My 9 years of design experience let me tackle complex challenges at the product, service, and system level in multi-disciplinary teams to make a positive impact on people and business. With elegant digital solutions, I aim for simplicity beyond complexity. In my spare time, I like to cycle, sketch, and practice woodworking.',
         experience: [
@@ -14,7 +14,7 @@
                 title: 'UX designer',
                 company: 'Ahold Delhaize',
                 period: '2021',
-                location: 'Zaandam',
+                location: 'Seattle',
                 description: `Full-time member of the Albert Heijn Design System team
 Enabled more than 20 tech squads by improving the overall consistency and accessibility, while significantly reducing development time & cost
 Principal system designer for a multibrand App: Gall&Gall gained 11K App customers and increased revenue by ~160K€ in 3 months
