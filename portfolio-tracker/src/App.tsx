@@ -377,7 +377,7 @@ function App() {
           <div className="space-y-6">
             {/* Portfolio Summary Cards */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-              <div className="bg-white p-6 rounded-xl shadow-sm border">
+              <div className="bg-white p-6 rounded-xl">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm font-medium text-gray-600">Total Invested</p>
@@ -391,7 +391,7 @@ function App() {
                 </div>
               </div>
               
-              <div className="bg-white p-6 rounded-xl shadow-sm border">
+              <div className="bg-white p-6 rounded-xl">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm font-medium text-gray-600">Current Value</p>
@@ -405,7 +405,7 @@ function App() {
                 </div>
               </div>
               
-              <div className="bg-white p-6 rounded-xl shadow-sm border">
+              <div className="bg-white p-6 rounded-xl">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm font-medium text-gray-600">Total Gain/Loss</p>
@@ -425,7 +425,7 @@ function App() {
                 </div>
               </div>
 
-              <div className="bg-white p-6 rounded-xl shadow-sm border">
+              <div className="bg-white p-6 rounded-xl">
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm font-medium text-gray-600">Dividends</p>
@@ -441,7 +441,7 @@ function App() {
             </div>
 
             {/* Positions Table */}
-            <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
+            <div className="bg-white rounded-xl border overflow-hidden">
               <div className="px-6 py-4 border-b border-gray-200">
                 <h3 className="text-lg font-semibold text-gray-900">Current Positions</h3>
               </div>
@@ -745,7 +745,7 @@ function App() {
               </div>
               <button
                 onClick={addDividend}
-                className="mt-4 flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+                className="mt-4 flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-green-700 transition-colors"
               >
                 <PlusCircle size={18} />
                 Add Dividend

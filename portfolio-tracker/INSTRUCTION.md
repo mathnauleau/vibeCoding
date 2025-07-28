@@ -36,3 +36,12 @@ In the terminal, run:
 
 ```bash
 npm create vite@latest my-project -- --template react-ts
+```
+
+### 4. Run the project locally
+
+In the terminal, run:
+
+```bash
+npm run dev
+```
