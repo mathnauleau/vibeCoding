@@ -14,6 +14,7 @@ body {
 
 .resume-container {
     max-width: 800px;
+    max-height: 1188px;
     margin: 0 auto;
     background: white;
     padding: 40px;

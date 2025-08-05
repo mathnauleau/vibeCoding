@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,7 +26,7 @@
             background: white;
             padding: 40px;
             border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
 
         .header {
@@ -68,20 +69,6 @@
             gap: 4px;
         }
 
-        .avatar {
-            width: 80px;
-            height: 80px;
-            background: #4A90E2;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 24px;
-            font-weight: bold;
-            flex-shrink: 0;
-        }
-
         .main-content {
             display: grid;
             grid-template-columns: 2fr 1fr;
@@ -107,12 +94,13 @@
             color: #1a1a1a;
             margin-bottom: 12px;
             padding-bottom: 3px;
-            border-bottom: 2px solid #1a1a1a;
+            border-bottom: 1px solid #1a1a1a;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
-        .job, .education-item {
+        .job,
+        .education-item {
             margin-bottom: 18px;
         }
 
@@ -136,12 +124,10 @@
         }
 
         .job-meta::before {
-            content: "📅 ";
-            margin-right: 4px;
+            margin-right: 8px;
         }
 
         .location::before {
-            content: "📍 ";
             margin-left: 12px;
             margin-right: 4px;
         }
@@ -164,14 +150,16 @@
             margin-bottom: 16px;
         }
 
-        .certification-link, .course-link {
+        .certification-link,
+        .course-link {
             color: #4A90E2;
             text-decoration: none;
             font-weight: 500;
             font-size: 13px;
         }
 
-        .certification-link:hover, .course-link:hover {
+        .certification-link:hover,
+        .course-link:hover {
             text-decoration: underline;
         }
 
@@ -311,7 +299,8 @@
                 margin-bottom: 8px;
             }
 
-            .job, .education-item {
+            .job,
+            .education-item {
                 margin-bottom: 12px;
                 page-break-inside: avoid;
             }
@@ -328,12 +317,6 @@
             }
 
             /* Ensure colors print well */
-            .avatar {
-                background: #666 !important;
-                -webkit-print-color-adjust: exact;
-                color-adjust: exact;
-            }
-
             .section-title {
                 border-bottom-color: #333 !important;
                 -webkit-print-color-adjust: exact;
@@ -346,7 +329,8 @@
                 color-adjust: exact;
             }
 
-            .skill-item, .additional-skill {
+            .skill-item,
+            .additional-skill {
                 background: #f0f0f0 !important;
                 -webkit-print-color-adjust: exact;
                 color-adjust: exact;
@@ -372,19 +356,19 @@
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
-            
+
             .right-column {
                 padding-left: 0;
                 border-left: none;
                 border-top: 1px solid #e0e0e0;
                 padding-top: 20px;
             }
-            
+
             .header {
                 flex-direction: column;
                 gap: 20px;
             }
-            
+
             .contact-info {
                 flex-direction: column;
                 gap: 8px;
@@ -392,26 +376,26 @@
         }
     </style>
 </head>
+
 <body>
     <div class="resume-container">
         <div class="header">
             <div class="header-info">
                 <h1 class="name">MATHIEU NAULEAU</h1>
-                <div class="title">UX designer</div>
+                <div class="title">Senior Product designer</div>
                 <div class="contact-info">
-                    <div class="contact-item">📞 +31616705280</div>
-                    <div class="contact-item">✉️ math.nauleau@gmail.com</div>
-                    <div class="contact-item">📍 Amsterdam</div>
+                    <div class="contact-item">+31616705280</div>
+                    <div class="contact-item">math.nauleau@gmail.com</div>
+                    <div class="contact-item">Amsterdam, NL</div>
                 </div>
             </div>
-            <div class="avatar">MN</div>
         </div>
 
         <div class="main-content">
             <div class="left-column">
                 <div class="section">
                     <h2 class="section-title">Experience</h2>
-                    
+
                     <div class="job">
                         <div class="job-title">UX designer</div>
                         <div class="company">Ahold Delhaize</div>
@@ -420,11 +404,15 @@
                         </div>
                         <ul class="job-description">
                             <li>Full-time member of the Albert Heijn Design System team</li>
-                            <li>Enabled more than 20 tech squads by improving the overall consistency and accessibility, while significantly reducing development time & cost</li>
-                            <li>Principal system designer for a multibrand App: Gall&Gall gained 11K App customers and increased revenue by ~160K€ in 3 months</li>
+                            <li>Enabled more than 20 tech squads by improving the overall consistency and accessibility,
+                                while significantly reducing development time & cost</li>
+                            <li>Principal system designer for a multibrand App: Gall&Gall gained 11K App customers and
+                                increased revenue by ~160K€ in 3 months</li>
                             <li>Etos gained 54K App customers and increased revenue by ~570K€ in 6 months</li>
-                            <li>Principal designer on AH Compact. The conversion increased by 8%, and revenue increased by 13% in the last year</li>
-                            <li>Principal designer on AH Overlijers. This proposition saved about 1,7K tons of waste</li>
+                            <li>Principal designer on AH Compact. The conversion increased by 8%, and revenue increased
+                                by 13% in the last year</li>
+                            <li>Principal designer on AH Overlijers. This proposition saved about 1,7K tons of waste
+                            </li>
                             <li>Overall, involved in the UX Process from the discovery to the implementation</li>
                         </ul>
                     </div>
@@ -437,7 +425,8 @@
                         </div>
                         <ul class="job-description">
                             <li>Strategic project about the inflight service ecosystem</li>
-                            <li>Designed at the product, service & system level with an active role from the initial context to the final deliverable</li>
+                            <li>Designed at the product, service & system level with an active role from the initial
+                                context to the final deliverable</li>
                             <li>Visualized complex service concepts into structured and clear visuals</li>
                         </ul>
                     </div>
@@ -449,7 +438,8 @@
                             01/2015 - 12/2020 <span class="location">Amsterdam</span>
                         </div>
                         <ul class="job-description">
-                            <li>Innovated in a wide variety of projects from product design to User interfaces, graphic design, branding & packaging</li>
+                            <li>Innovated in a wide variety of projects from product design to User interfaces, graphic
+                                design, branding & packaging</li>
                             <li>Worked with start-ups and multinationals</li>
                         </ul>
                     </div>
@@ -457,7 +447,7 @@
 
                 <div class="section">
                     <h2 class="section-title">Education</h2>
-                    
+
                     <div class="education-item">
                         <div class="degree-name">Master in industrial design</div>
                         <div class="school-name">L'École de design Nantes Atlantique</div>
@@ -485,7 +475,11 @@
                 <div class="section">
                     <h2 class="section-title">Summary</h2>
                     <div class="summary-text">
-                        <strong>SENIOR PRODUCT DESIGNER</strong> My 9 years of design experience let me tackle complex challenges at the product, service, and system level in multi-disciplinary teams to make a positive impact on people and business. With elegant digital solutions, I aim for simplicity beyond complexity. In my spare time, I like to cycle, sketch, and practice woodworking.
+                        <strong>SENIOR PRODUCT DESIGNER</strong> <br> My 9 years of design experience let me tackle
+                        complex
+                        challenges at the product, service, and system level in multi-disciplinary teams to make a
+                        positive impact on people and business. With elegant digital solutions, I aim for simplicity
+                        beyond complexity. In my spare time, I like to cycle, sketch, and practice woodworking.
                     </div>
                 </div>
 
@@ -539,4 +533,5 @@
         </div>
     </div>
 </body>
+
 </html>
