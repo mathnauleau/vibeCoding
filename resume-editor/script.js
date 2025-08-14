@@ -2,13 +2,12 @@
     let resumeData = {
         personal: {
             fullName: 'MATHIEU NAULEAU',
-            jobTitle: 'UX designer',
+            jobTitle: 'SENIOR PRODUCT DESIGNER',
             phone: '+31612345678',
             email: 'hello@gmail.com',
             location: 'San Francisco',
-            initials: 'AB'
         },
-        summary: 'SENIOR PRODUCT DESIGNER My 9 years of design experience let me tackle complex challenges at the product, service, and system level in multi-disciplinary teams to make a positive impact on people and business. With elegant digital solutions, I aim for simplicity beyond complexity. In my spare time, I like to cycle, sketch, and practice woodworking.',
+        summary: 'My 9 years of design experience let me tackle complex challenges at the product, service, and system level in multi-disciplinary teams to make a positive impact on people and business. With elegant digital solutions, I aim for simplicity beyond complexity. In my spare time, I like to cycle, sketch, and practice woodworking.',
         experience: [
             {
                 title: 'UX designer',
@@ -87,7 +86,7 @@ Worked with start-ups and multinationals`
             const div = document.createElement('div');
             div.className = 'list-item';
             div.innerHTML = `
-                <button class="remove-btn" onclick="removeExperience(${index})">×</button>
+                <button class="remove-btn" onclick="removeExperience(${index})"><img class="delete-btn" src="./assets/x.svg"/></button>
                 <h4>Experience ${index + 1}</h4>
                 <div class="form-row">
                     <div class="form-group">
@@ -127,7 +126,7 @@ Worked with start-ups and multinationals`
             const div = document.createElement('div');
             div.className = 'list-item';
             div.innerHTML = `
-                <button class="remove-btn" onclick="removeEducation(${index})">×</button>
+                <button class="remove-btn" onclick="removeEducation(${index})"><img class="delete-btn" src="./assets/x.svg"/></button>
                 <h4>Education ${index + 1}</h4>
                 <div class="form-row">
                     <div class="form-group">
@@ -163,7 +162,7 @@ Worked with start-ups and multinationals`
             const div = document.createElement('div');
             div.className = 'list-item';
             div.innerHTML = `
-                <button class="remove-btn" onclick="removeLanguage(${index})">×</button>
+                <button class="remove-btn" onclick="removeLanguage(${index})"><img class="delete-btn" src="./assets/x.svg"/></button>
                 <h4>Language ${index + 1}</h4>
                 <div class="form-row">
                     <div class="form-group">
@@ -173,12 +172,6 @@ Worked with start-ups and multinationals`
                     <div class="form-group">
                         <label>Level</label>
                         <input type="text" value="${lang.level}" onchange="updateLanguage(${index}, 'level', this.value)">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Proficiency (1-4 dots)</label>
-                    <div class="skill-dots">
-                        ${[1, 2, 3, 4].map(i => `<div class="dot ${i <= lang.proficiency ? 'active' : ''}" onclick="updateLanguageProficiency(${index}, ${i})"></div>`).join('')}
                     </div>
                 </div>
             `;
@@ -260,7 +253,6 @@ Worked with start-ups and multinationals`
             phone: document.getElementById('phone').value,
             email: document.getElementById('email').value,
             location: document.getElementById('location').value,
-            initials: document.getElementById('initials').value
         };
         resumeData.summary = document.getElementById('summary').value;
         resumeData.skills = document.getElementById('skills').value.split(',').map(s => s.trim());
@@ -279,7 +271,7 @@ Worked with start-ups and multinationals`
         ).join('');
 
         const additionalSkills = resumeData.skills.slice(4).map(skill =>
-            `<div class="skill-item" style="grid-column: 1 / -1; margin-top: 8px;">${skill}</div>`
+            `<div class="skill-item">${skill}</div>`
         ).join('');
 
         const experienceHTML = resumeData.experience.map(exp => `
@@ -299,7 +291,7 @@ Worked with start-ups and multinationals`
             <div class="education-item">
                 <div class="degree-name">${edu.degree}</div>
                 <div class="school-name">${edu.school}</div>
-                <div class="education-meta">${edu.period} 📍 ${edu.location}</div>
+                <div class="education-meta">${edu.period} ${edu.location}</div>
             </div>
         `).join('');
 
@@ -307,9 +299,6 @@ Worked with start-ups and multinationals`
             <div class="language">
                 <div class="language-name">${lang.name}</div>
                 <div class="language-level">${lang.level}</div>
-                <div class="resume-skill-dots">
-                    ${[1, 2, 3, 4].map(i => `<div class="dot ${i <= lang.proficiency ? '' : 'empty'}"></div>`).join('')}
-                </div>
             </div>
         `).join('');
 
@@ -320,12 +309,11 @@ Worked with start-ups and multinationals`
                         <h1 class="name">${resumeData.personal.fullName}</h1>
                         <div class="title">${resumeData.personal.jobTitle}</div>
                         <div class="contact-info">
-                            <div class="contact-item">📞 ${resumeData.personal.phone}</div>
-                            <div class="contact-item">✉️ ${resumeData.personal.email}</div>
-                            <div class="contact-item">📍 ${resumeData.personal.location}</div>
+                            <div class="contact-item">${resumeData.personal.phone}</div>
+                            <div class="contact-item">${resumeData.personal.email}</div>
+                            <div class="contact-item">${resumeData.personal.location}</div>
                         </div>
                     </div>
-                    <div class="avatar">${resumeData.personal.initials}</div>
                 </div>
 
                 <div class="main-content">
@@ -368,8 +356,8 @@ Worked with start-ups and multinationals`
                             <h2 class="section-title">Skills</h2>
                             <div class="skills-grid">
                                 ${skillsHTML}
+                                ${additionalSkills}
                             </div>
-                            ${additionalSkills}
                         </div>
                     </div>
                 </div>
@@ -395,16 +383,15 @@ Worked with start-ups and multinationals`
     // Generate complete HTML for download
     function generateCompleteHTML() {
         const resumeContent = generateResumeHTML();
-        return `<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>${resumeData.personal.fullName} - Resume</title>
-
-    <link href="style-resume.css" rel="stylesheet" />
-
-</head>
+        return `
+        <!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>${resumeData.personal.fullName} - Resume</title>
+            <link href="style-resume.css" rel="stylesheet" />
+        </head>
     <body>
         ${resumeContent}
     </body>
@@ -435,7 +422,7 @@ Worked with start-ups and multinationals`
         initializeEditor();
 
         // Add event listeners for auto-update
-        const inputs = ['fullName', 'jobTitle', 'phone', 'email', 'location', 'initials', 'summary', 'skills', 'certification', 'training'];
+        const inputs = ['fullName', 'jobTitle', 'phone', 'email', 'location', 'summary', 'skills', 'certification', 'training'];
         inputs.forEach(id => {
             const element = document.getElementById(id);
             if (element) {
@@ -466,7 +453,6 @@ Worked with start-ups and multinationals`
                 document.getElementById('location').value = resumeData.personal.location;
                 document.getElementById('initials').value = resumeData.personal.initials;
                 document.getElementById('summary').value = resumeData.summary;
-                document.getElementById('skills').value = resumeData.skills.join(', ');
                 document.getElementById('certification').value = resumeData.certification;
                 document.getElementById('training').value = resumeData.training;
             }

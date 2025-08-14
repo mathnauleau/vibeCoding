@@ -13,7 +13,7 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: "Inter", 'Segoe UI', Roboto, sans-serif;
             line-height: 1.4;
             color: #333;
             background-color: #f9f9f9;
@@ -41,17 +41,17 @@
         }
 
         .name {
-            font-size: 32px;
+            font-size: 40px;
+            font-family: "Montserrat", sans-serif;
             font-weight: bold;
-            color: #1a1a1a;
+            color: var(--color-primary);
             margin-bottom: 8px;
-            letter-spacing: -0.5px;
         }
 
         .title {
             font-size: 16px;
             color: #4A90E2;
-            font-weight: 500;
+            font-weight: 300;
             margin-bottom: 16px;
         }
 
@@ -134,6 +134,7 @@
 
         .job-description {
             margin-left: 0;
+            list-style: inside;
         }
 
         .job-description li {
@@ -217,17 +218,6 @@
             font-weight: 500;
         }
 
-        .additional-skill {
-            background: #f5f5f5;
-            padding: 6px 10px;
-            border-radius: 4px;
-            font-size: 12px;
-            color: #555;
-            text-align: center;
-            font-weight: 500;
-            display: inline-block;
-        }
-
         .degree-name {
             font-weight: 600;
             color: #1a1a1a;
@@ -249,7 +239,6 @@
         }
 
         .education-meta::before {
-            content: "📅 ";
             margin-right: 4px;
         }
 
@@ -325,13 +314,6 @@
 
             .dot {
                 background: #333 !important;
-                -webkit-print-color-adjust: exact;
-                color-adjust: exact;
-            }
-
-            .skill-item,
-            .additional-skill {
-                background: #f0f0f0 !important;
                 -webkit-print-color-adjust: exact;
                 color-adjust: exact;
             }
@@ -451,22 +433,19 @@
                     <div class="education-item">
                         <div class="degree-name">Master in industrial design</div>
                         <div class="school-name">L'École de design Nantes Atlantique</div>
-                        <div class="education-meta">09/2010 - 05/2015 📍 Fr</div>
+                        <div class="education-meta">09/2010 - 05/2015 Fr</div>
                     </div>
 
                     <div class="education-item">
                         <div class="degree-name">Bachelor</div>
                         <div class="school-name">Milwaukee Institute of Art & Design</div>
-                        <div class="education-meta">01/2013 - 12/2013 📍 Milwaukee, USA</div>
+                        <div class="education-meta">01/2013 - 12/2013 | Milwaukee, USA</div>
                     </div>
 
                     <div class="education-item">
                         <div class="degree-name">Product Management & Strategy</div>
                         <div class="school-name">School or University</div>
-                        <div class="education-meta">10/2023 - 12/2023 📍 Location</div>
-                        <ul class="job-description">
-                            <li>Product Management & Strategy ()</li>
-                        </ul>
+                        <div class="education-meta">10/2023 - 12/2023 | Location</div>
                     </div>
                 </div>
             </div>
@@ -475,11 +454,10 @@
                 <div class="section">
                     <h2 class="section-title">Summary</h2>
                     <div class="summary-text">
-                        <strong>SENIOR PRODUCT DESIGNER</strong> <br> My 9 years of design experience let me tackle
-                        complex
-                        challenges at the product, service, and system level in multi-disciplinary teams to make a
-                        positive impact on people and business. With elegant digital solutions, I aim for simplicity
-                        beyond complexity. In my spare time, I like to cycle, sketch, and practice woodworking.
+                        My 9 years of design experience let me tackle complex challenges at the product, service, and
+                        system level in multi-disciplinary teams to make a positive impact on people and business. With
+                        elegant digital solutions, I aim for simplicity beyond complexity. In my spare time, I like to
+                        cycle, sketch, and practice woodworking.
                     </div>
                 </div>
 
@@ -527,7 +505,6 @@
                         <div class="skill-item">Sketch</div>
                         <div class="skill-item">Gmail</div>
                     </div>
-                    <div class="additional-skill">AB Testing</div>
                 </div>
             </div>
         </div>

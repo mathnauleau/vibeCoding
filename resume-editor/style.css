@@ -1,27 +1,28 @@
-@import url("tokens.css")
+@import url("./tokens.css");
 
 
-* {
+*{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #f0f2f5;
+    font-family: "Inter", 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.5;
+    color: var(--color-primary);
+    background-color: var(--color-gray-2);
 }
 
 .app-container {
-    max-width: 1400px;
+    max-width: 100%;
     margin: 0 auto;
     padding: 20px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
-    min-height: 100vh;
+    min-height: 90vh;
+    overflow-y: hidden;
 }
 
 .editor-panel {
@@ -34,9 +35,8 @@ body {
 }
 
 .preview-panel {
-    background: white;
+    background: rgba(255, 255, 255, 0.279);
     border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     padding: 24px;
     overflow-y: auto;
     max-height: calc(100vh - 40px);
@@ -54,7 +54,8 @@ body {
 .panel-title {
     font-size: 24px;
     font-weight: bold;
-    color: #1a1a1a;
+    color: var(--color-primary);
+    font: var(--typography-heading-2);
 }
 
 .action-buttons {
@@ -104,13 +105,12 @@ body {
     padding: 20px;
     background: #f8f9fa;
     border-radius: 8px;
-    border-left: 4px solid #4A90E2;
 }
 
 .form-section h3 {
-    font-size: 18px;
+    font-size: var(--typography-heading-3);
     font-weight: bold;
-    color: #1a1a1a;
+    color: var(--color-primary);
     margin-bottom: 16px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -122,9 +122,9 @@ body {
 
 .form-group label {
     display: block;
-    font-weight: 500;
+    font-weight: 300;
     margin-bottom: 4px;
-    color: #333;
+    color: var(--color-primary);
 }
 
 .form-group input,
@@ -138,7 +138,7 @@ body {
 }
 
 .form-group textarea {
-    min-height: 80px;
+    min-height: 160px;
     resize: vertical;
 }
 
@@ -149,21 +149,24 @@ body {
     box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.1);
 }
 
-.form-row {
+.form-row1 {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 2fr;
+    gap: 12px;
+}
+
+.form-row2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 12px;
 }
 
 .dynamic-list {
-    border: 1px solid #e0e0e0;
-    border-radius: 6px;
-    padding: 16px;
-    background: white;
+    background: none;
 }
 
 .list-item {
-    background: #f8f9fa;
+    background: #FFFFFF;
     border: 1px solid #e0e0e0;
     border-radius: 6px;
     padding: 16px;
@@ -179,19 +182,24 @@ body {
 
 .remove-btn {
     position: absolute;
-    top: 8px;
-    right: 8px;
+    top: 12px;
+    right: 12px;
     background: #dc3545;
     color: white;
     border: none;
-    width: 24px;
-    height: 24px;
+    width: 32px;
+    height: 32px;
     border-radius: 50%;
     cursor: pointer;
     font-size: 12px;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.remove-btn img{
+    color: #FFFFFF;
+    stroke: #FFFFFF;
 }
 
 .add-btn {
@@ -249,16 +257,16 @@ body {
 }
 
 .name {
-    font-size: 32px;
+    font-size: 48px;
+    font-family: "Montserrat", sans-serif;
     font-weight: bold;
-    color: #1a1a1a;
+    color: var(--color-primary);
     margin-bottom: 8px;
-    letter-spacing: -0.5px;
 }
 
 .title {
-    font-size: 16px;
-    color: #4A90E2;
+    font-size: 20px;
+    color: var(--color-primary);
     font-weight: 500;
     margin-bottom: 16px;
 }
@@ -268,7 +276,7 @@ body {
     gap: 20px;
     flex-wrap: wrap;
     font-size: 14px;
-    color: #666;
+    color: var(--color-gray-6);
 }
 
 .contact-item {
@@ -311,12 +319,11 @@ body {
 }
 
 .section-title {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
-    color: #1a1a1a;
+    color: var(--color-primary);
     margin-bottom: 16px;
     padding-bottom: 4px;
-    border-bottom: 2px solid #1a1a1a;
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -329,7 +336,7 @@ body {
 .job-title {
     font-size: 16px;
     font-weight: 600;
-    color: #1a1a1a;
+    color: var(--color-primary);
     margin-bottom: 4px;
 }
 
@@ -346,12 +353,10 @@ body {
 }
 
 .job-meta::before {
-    content: "📅 ";
     margin-right: 4px;
 }
 
 .location::before {
-    content: "📍 ";
     margin-left: 12px;
     margin-right: 4px;
 }
@@ -391,7 +396,7 @@ body {
 
 .language-name {
     font-weight: 600;
-    color: #1a1a1a;
+    color: var(--color-primary);
     margin-bottom: 4px;
 }
 
@@ -399,22 +404,6 @@ body {
     font-size: 13px;
     color: #666;
     margin-bottom: 4px;
-}
-
-.resume-skill-dots {
-    display: flex;
-    gap: 4px;
-}
-
-.resume-skill-dots .dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: #4A90E2;
-}
-
-.resume-skill-dots .dot.empty {
-    background: #e0e0e0;
 }
 
 .skills-grid {
@@ -434,9 +423,17 @@ body {
     font-weight: 500;
 }
 
+.skill-item,
+.additional-skill {
+    grid-template-columns: 1fr 1fr;
+    background: #f0f0f0 !important;
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
+}
+
 .degree-name {
     font-weight: 600;
-    color: #1a1a1a;
+    color: var(--color-primary);
     margin-bottom: 4px;
 }
 
