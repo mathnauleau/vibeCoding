@@ -1,19 +1,19 @@
     // Initial data structure
     let resumeData = {
         personal: {
-            fullName: 'MATHIEU NAULEAU',
-            jobTitle: 'SENIOR PRODUCT DESIGNER',
+            fullName: 'Mathieu Nauleau',
+            jobTitle: 'Senior Product Designer',
             phone: '+31612345678',
             email: 'hello@gmail.com',
-            location: 'San Francisco',
+            location: 'Amsterdam',
         },
         summary: 'My 9 years of design experience let me tackle complex challenges at the product, service, and system level in multi-disciplinary teams to make a positive impact on people and business. With elegant digital solutions, I aim for simplicity beyond complexity. In my spare time, I like to cycle, sketch, and practice woodworking.',
         experience: [
             {
-                title: 'UX designer',
+                title: 'Product designer',
                 company: 'Ahold Delhaize',
-                period: '2021',
-                location: 'Seattle',
+                period: '2021-2025',
+                location: 'Amsterdam',
                 description: `Full-time member of the Albert Heijn Design System team
 Enabled more than 20 tech squads by improving the overall consistency and accessibility, while significantly reducing development time & cost
 Principal system designer for a multibrand App: Gall&Gall gained 11K App customers and increased revenue by ~160K€ in 3 months
@@ -391,6 +391,16 @@ Worked with start-ups and multinationals`
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>${resumeData.personal.fullName} - Resume</title>
             <link href="style-resume.css" rel="stylesheet" />
+
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link
+                href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+                rel="stylesheet">
+            <link
+                href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+                rel="stylesheet">
+
         </head>
     <body>
         ${resumeContent}

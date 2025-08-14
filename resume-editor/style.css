@@ -363,6 +363,7 @@ body {
 
 .job-description {
     margin-left: 0;
+    list-style: inside;
 }
 
 .job-description li {

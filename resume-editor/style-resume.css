@@ -1,3 +1,5 @@
+@import url("./tokens.css");
+
 * {
     margin: 0;
     padding: 0;
@@ -33,7 +35,7 @@ body {
 }
 
 .name {
-    font-size: 40px;
+    font-size: 48px;
     font-family: "Montserrat", sans-serif;
     font-weight: bold;
     color: var(--color-primary);
@@ -41,9 +43,9 @@ body {
 }
 
 .title {
-    font-size: 16px;
-    color: #4A90E2;
-    font-weight: 300;
+    font-size: 20px;
+    color: var(--color-primary);
+    font-weight: 500;
     margin-bottom: 16px;
 }
 
