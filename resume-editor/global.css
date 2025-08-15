@@ -48,7 +48,6 @@ body {
     align-items: center;
     margin-bottom: 24px;
     padding-bottom: 12px;
-    border-bottom: 1px solid var(--color-primary);
 }
 
 .panel-title {
@@ -64,11 +63,11 @@ body {
 }
 
 .btn {
-    padding: 10px 20px;
+    padding: 8px 16px;
     border: none;
-    border-radius: 6px;
-    font-size: 14px;
-    font-weight: 500;
+    border-radius: 8px;
+    font-size: 16px;
+    font: var(--typography-bodyReg);
     cursor: pointer;
     transition: all 0.2s;
 }
@@ -254,14 +253,6 @@ body {
 
 .header-info {
     flex: 1;
-}
-
-.name {
-    font-size: 48px;
-    font-family: "Montserrat", sans-serif;
-    font-weight: bold;
-    color: var(--color-primary);
-    margin-bottom: 8px;
 }
 
 .title {

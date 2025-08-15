@@ -6,8 +6,8 @@
             phone: '+31612345678',
             email: 'hello@gmail.com',
             location: 'Amsterdam',
-            website: 'http://mathieunauleau.com',
-            linkedin: 'linkedin.com/in/mathieunauleau',
+            website: 'mathieunauleau.com',
+            linkedin: 'in/mathieunauleau',
         },
         summary: 'My 9 years of design experience let me tackle complex challenges at the product, service, and system level in multi-disciplinary teams to make a positive impact on people and business. With elegant digital solutions, I aim for simplicity beyond complexity. In my spare time, I like to cycle, sketch, and practice woodworking.',
         experience: [
@@ -316,7 +316,7 @@ Worked with start-ups and multinationals`
                             <div class="contact-item">${resumeData.personal.phone}</div>
                             <div class="contact-item">${resumeData.personal.email}</div>
                             <div class="contact-item">${resumeData.personal.location}</div>
-                            <div class="contact-item">${resumeData.personal.website}</div>
+                            <div class="contact-item"><a target="_blank" href="http://${resumeData.personal.website}">${resumeData.personal.website}</a></div>
                             <div class="contact-item">${resumeData.personal.linkedin}</div>
                         </div>
                     </div>
