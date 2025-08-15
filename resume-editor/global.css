@@ -48,7 +48,7 @@ body {
     align-items: center;
     margin-bottom: 24px;
     padding-bottom: 12px;
-    border-bottom: 2px solid #e0e0e0;
+    border-bottom: 1px solid var(--color-primary);
 }
 
 .panel-title {
@@ -302,16 +302,11 @@ body {
 .main-content {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    gap: 40px;
+    gap: 24px;
 }
 
 .left-column {
-    padding-right: 20px;
-}
-
-.right-column {
-    padding-left: 20px;
-    border-left: 1px solid #e0e0e0;
+    padding-right: 0;
 }
 
 .section {
@@ -407,31 +402,6 @@ body {
     margin-bottom: 4px;
 }
 
-.skills-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin-bottom: 16px;
-}
-
-.skill-item {
-    background: #f5f5f5;
-    padding: 8px 12px;
-    border-radius: 4px;
-    font-size: 13px;
-    color: #555;
-    text-align: center;
-    font-weight: 500;
-}
-
-.skill-item,
-.additional-skill {
-    grid-template-columns: 1fr 1fr;
-    background: #f0f0f0 !important;
-    -webkit-print-color-adjust: exact;
-    color-adjust: exact;
-}
-
 .degree-name {
     font-weight: 600;
     color: var(--color-primary);
@@ -451,14 +421,14 @@ body {
 }
 
 .education-meta::before {
-    content: "📅 ";
+    /* content: "📅 "; */
     margin-right: 4px;
 }
 
 @media (max-width: 1200px) {
     .app-container {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 24px;
     }
 }
 

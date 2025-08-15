@@ -66,29 +66,30 @@ body {
 .main-content {
     display: grid;
     grid-template-columns: 2fr 1fr;
-    gap: 30px;
+    gap: 24px;
 }
 
 .left-column {
-    padding-right: 15px;
+    padding-right: 0;
 }
 
 .right-column {
-    padding-left: 15px;
-    border-left: 1px solid #e0e0e0;
+    padding-left: 24px;
+    border-left: 1px solid var(--color-primary);
 }
 
 .section {
     margin-bottom: 24px;
+    /* border-bottom: 1px solid var(--color-primary);     */
 }
 
 .section-title {
     font-size: 16px;
     font-weight: bold;
-    color: #1a1a1a;
+    color: var(--color-primary);
     margin-bottom: 12px;
     padding-bottom: 3px;
-    border-bottom: 1px solid #1a1a1a;
+    /* border-bottom: 1px solid var(--color-primary); */
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
@@ -198,18 +199,23 @@ body {
 .skills-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 6px;
+    gap: 12px;
     margin-bottom: 12px;
 }
 
 .skill-item {
-    background: #f5f5f5;
-    padding: 6px 10px;
-    border-radius: 4px;
+    padding: 0;
     font-size: 12px;
-    color: #555;
-    text-align: center;
-    font-weight: 500;
+    color: var(--color-primary);
+    text-align: left;
+    font-weight: 400;
+}
+
+.skill-item,
+.additional-skill {
+    grid-template-columns: 1fr 1fr;
+    -webkit-print-color-adjust: exact;
+    color-adjust: exact;
 }
 
 .degree-name {
@@ -268,7 +274,7 @@ body {
     .main-content {
         display: grid;
         grid-template-columns: 65% 35%;
-        gap: 20px;
+        gap: 24px;
         page-break-inside: avoid;
     }
 
@@ -330,19 +336,19 @@ body {
 @media (max-width: 768px) {
     .main-content {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 24px;
     }
 
     .right-column {
         padding-left: 0;
         border-left: none;
-        border-top: 1px solid #e0e0e0;
-        padding-top: 20px;
+        border-top: 1px solid var(--color-primary);
+        padding-top: 24px;
     }
 
     .header {
         flex-direction: column;
-        gap: 20px;
+        gap: 24px;
     }
 
     .contact-info {
