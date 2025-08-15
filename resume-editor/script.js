@@ -6,6 +6,8 @@
             phone: '+31612345678',
             email: 'hello@gmail.com',
             location: 'Amsterdam',
+            website: 'http://mathieunauleau.com',
+            linkedin: 'linkedin.com/in/mathieunauleau',
         },
         summary: 'My 9 years of design experience let me tackle complex challenges at the product, service, and system level in multi-disciplinary teams to make a positive impact on people and business. With elegant digital solutions, I aim for simplicity beyond complexity. In my spare time, I like to cycle, sketch, and practice woodworking.',
         experience: [
@@ -253,6 +255,8 @@ Worked with start-ups and multinationals`
             phone: document.getElementById('phone').value,
             email: document.getElementById('email').value,
             location: document.getElementById('location').value,
+            website: document.getElementById('website').value,
+            linkedin: document.getElementById('linkedin').value,
         };
         resumeData.summary = document.getElementById('summary').value;
         resumeData.skills = document.getElementById('skills').value.split(',').map(s => s.trim());
@@ -312,6 +316,8 @@ Worked with start-ups and multinationals`
                             <div class="contact-item">${resumeData.personal.phone}</div>
                             <div class="contact-item">${resumeData.personal.email}</div>
                             <div class="contact-item">${resumeData.personal.location}</div>
+                            <div class="contact-item">${resumeData.personal.website}</div>
+                            <div class="contact-item">${resumeData.personal.linkedin}</div>
                         </div>
                     </div>
                 </div>
@@ -461,6 +467,8 @@ Worked with start-ups and multinationals`
                 document.getElementById('phone').value = resumeData.personal.phone;
                 document.getElementById('email').value = resumeData.personal.email;
                 document.getElementById('location').value = resumeData.personal.location;
+                document.getElementById('website').value = resumeData.personal.website;
+                document.getElementById('linkedin').value = resumeData.personal.linkedin;
                 document.getElementById('initials').value = resumeData.personal.initials;
                 document.getElementById('summary').value = resumeData.summary;
                 document.getElementById('certification').value = resumeData.certification;
