@@ -270,12 +270,6 @@ body {
     color: var(--color-gray-6);
 }
 
-.contact-item {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-}
-
 .avatar {
     width: 80px;
     height: 80px;

@@ -49,6 +49,12 @@ body {
     margin-bottom: 16px;
 }
 
+hr.divider{
+    border: none;
+    border-bottom: 1px solid var(--color-primary);
+    margin-bottom: 24px;
+}
+
 .contact-info {
     display: flex;
     gap: 20px;
@@ -59,8 +65,14 @@ body {
 
 .contact-item {
     display: flex;
-    align-items: center;
     gap: 4px;
+    font-weight: 300;
+    text-decoration: none;
+}
+
+.contact-item a{
+    text-decoration: none;
+    color: var(--color-gray-8);
 }
 
 .main-content {

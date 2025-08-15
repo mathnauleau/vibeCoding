@@ -314,10 +314,10 @@ Worked with start-ups and multinationals`
                         <div class="title">${resumeData.personal.jobTitle}</div>
                         <div class="contact-info">
                             <div class="contact-item">${resumeData.personal.phone}</div>
-                            <div class="contact-item">${resumeData.personal.email}</div>
+                            <div class="contact-item"><a target="_blank" href="mailto:${resumeData.personal.email}">${resumeData.personal.email}</a></div>
                             <div class="contact-item">${resumeData.personal.location}</div>
                             <div class="contact-item"><a target="_blank" href="http://${resumeData.personal.website}">${resumeData.personal.website}</a></div>
-                            <div class="contact-item">${resumeData.personal.linkedin}</div>
+                            <div class="contact-item"><a target="_blank" href="http://${resumeData.personal.linkedim}">${resumeData.personal.linkedin}</a></div>
                         </div>
                     </div>
                 </div>
@@ -341,6 +341,8 @@ Worked with start-ups and multinationals`
                             <div class="summary-text">${resumeData.summary}</div>
                         </div>
 
+                        <hr class="divider">
+
                         <div class="section">
                             <h2 class="section-title">Certification</h2>
                             <a href="#" class="certification-link">${resumeData.certification}</a>
@@ -351,12 +353,16 @@ Worked with start-ups and multinationals`
                             <a href="#" class="course-link">${resumeData.training}</a>
                         </div>
 
+                        <hr class="divider">
+
                         <div class="section">
                             <h2 class="section-title">Languages</h2>
                             <div class="languages">
                                 ${languagesHTML}
                             </div>
                         </div>
+
+                        <hr class="divider">
 
                         <div class="section">
                             <h2 class="section-title">Skills</h2>
