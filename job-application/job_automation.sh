@@ -5,12 +5,12 @@
 
 # Configuration - UPDATE THESE PATHS AND KEYS
 BASE_FOLDER="$HOME/Documents/Job Applications"
-RESUME_TEMPLATE="$HOME/Documents/Templates/resume.pdf"
-COVER_LETTER_TEMPLATE="$HOME/Documents/Templates/cover_letter.docx"
-KEYNOTE_TEMPLATE="$HOME/Documents/Templates/presentation.key"
-NOTION_API_KEY="your_notion_api_key_here"
-NOTION_DATABASE_ID="your_notion_database_id_here"
-OPENAI_API_KEY="your_openai_api_key_here"
+RESUME_TEMPLATE="$HOME/Documents/Resume/resume-en.pdf"
+COVER_LETTER_TEMPLATE="$HOME/Documents/Resume/cover_letter-en.pdf"
+KEYNOTE_TEMPLATE="$HOME/Documents/Resume/presentation.key"
+NOTION_API_KEY="your_notion_api_key_here" # https://www.notion.so/profile/integrations
+NOTION_DATABASE_ID="your_notion_database_id_here" # https://api.notion.com/v1/databases/{database_id}
+OPENAI_API_KEY="your_openai_api_key_here" # https://help.openai.com/en/articles/4936850-where-do-i-find-my-openai-api-key
 
 # Input validation
 if [ $# -lt 1 ]; then
