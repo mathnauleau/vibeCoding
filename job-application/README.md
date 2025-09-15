@@ -1,3 +1,5 @@
+![Example](example.png)
+
 # Job Application script
 
 ## Purpose
@@ -30,8 +32,9 @@ A bash script that:
 - Integrates with APIs (Notion, OpenAI)
 - Handles file paths and organization
 
-## Mak 
+## Execute the script
 
 ```bash 
 chmod +x job_automation.sh
+./job_automation.sh "Apple Inc" "iOS Developer" "Cupertino, CA" "https://apple.com"
 ```
