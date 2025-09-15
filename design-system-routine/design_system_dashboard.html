@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.png" type="image/png">
+    <title>Design System Release Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Inter, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #4562e5 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 60px 20px;
+        }
+        
+        .dashboard {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #26313A 0%, #26313A 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        
+        .week-info {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        
+        .reset-container {
+            margin-top: 20px;
+        }
+        
+        .reset-btn {
+            background: rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 24px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        
+        .reset-btn:hover {
+            background: rgba(255,255,255,0.3);
+            border-color: rgba(255,255,255,0.5);
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .platform-section {
+            margin-bottom: 40px;
+            border: 1px solid #d7dbdf;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .platform-header {
+            background: #f8f9fa;
+            padding: 20px;
+            border-bottom: 1px solid #d7dbdf;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .platform-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #26313A;
+        }
+
+        .platform-title img{
+            color: #26313A;
+            margin-right: 8px;
+            width: 20px;
+            height: 20px;
+        }
+        
+        .platform-link {
+            background: #00ADE6;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 24px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: ease-in 0.2s;
+        }
+        
+        .platform-link:hover {
+            background: #3CC0EB;
+        }
+        
+        .progress-container {
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .progress-bar {
+            width: 180px;
+            height: 8px;
+            background: #d7dbdf;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00ADE6, #2ecc71);
+            width: 0%;
+            transition: width 0.3s;
+        }
+        
+        .progress-text {
+            font-size: 14px;
+            font-weight: 600;
+            color: #26313A;
+        }
+        
+        .tasks-container {
+            padding: 20px;
+        }
+        
+        .task-category {
+            margin-bottom: 25px;
+        }
+        
+        .category-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #26313A;
+            margin-bottom: 12px;
+            padding-left: 5px;
+        }
+        
+        .task-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .task-item.not-started {
+            background: #fff5f5;
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .task-item.in-progress {
+            background: #fff8e1;
+            border-left: 4px solid #f39c12;
+        }
+        
+        .task-item.completed {
+            background: #f0f9ff;
+            border-left: 4px solid #2ecc71;
+        }
+        
+        .task-item.blocked {
+            background: #f5f5f5;
+            border-left: 4px solid #95a5a6;
+            opacity: 0.6;
+        }
+        
+        .task-checkbox {
+            margin-right: 15px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+        
+        .task-text {
+            flex: 1;
+            font-size: 14px;
+            color: #26313A;
+        }
+        
+        .task-item.completed .task-text {
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+        
+        .task-item.blocked .task-text {
+            color: #7f8c8d;
+        }
+        
+        .dependency-note {
+            font-size: 12px;
+            color: #7f8c8d;
+            font-style: italic;
+            margin-left: 33px;
+            margin-top: -5px;
+            margin-bottom: 8px;
+        }
+        
+        .status-legend {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: #26313A;
+        }
+        
+        .legend-color {
+            width: 12px;
+            height: 12px;
+            border-radius: 2px;
+        }
+        
+        .legend-color.not-started { background: #e74c3c; }
+        .legend-color.in-progress { background: #f39c12; }
+        .legend-color.completed { background: #2ecc71; }
+        .legend-color.blocked { background: #95a5a6; }
+
+        textarea {
+            height: 280px;
+        }
+
+        .notes-container {
+            margin-top: 15px;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border: 1px solid #e1e8ed;
+        }
+        
+        .notes-label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        
+        .notes-field {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e8ed;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 14px;
+            line-height: 1.4;
+            resize: vertical;
+            transition: border-color 0.3s;
+        }
+        
+        .notes-field:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        
+        .notes-field::placeholder {
+            color: #7f8c8d;
+        }
+    </style>    
+</head>
+
+<body>
+    <div class="dashboard">
+        <div class="header">
+            <img src="Logo.png" width="120px" alt="Pantry logo" style="margin: 8px 0 24px 0;"/>
+            <h1>Design System Release Dashboard</h1>
+            <div class="week-info">Week <span id="current-week"></span></div>
+            <div class="reset-container">
+                <button class="reset-btn" onclick="resetDashboard()">🚀 Reset for new release</button>
+            </div>
+        </div>
+        
+        <div class="content">
+            
+            <!-- Figma Section -->
+            <div class="platform-section">
+                <div class="platform-header">
+                    <div class="platform-title"><img src="figma.png" alt="book"/>Figma</div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="figma-progress"></div>
+                        </div>
+                        <div class="progress-text" id="figma-percentage">0%</div>
+                        <a href="https://www.figma.com/design/OK6sqz0WwDZuc9dKMjOIqS/Pantry-AH---App-Components?m=auto&node-id=0-1&t=gP5d1agpvrdGCTnm-1" class="platform-link" target="_blank">❖ App Library</a>
+                        <a href="https://www.figma.com/design/OK6sqz0WwDZuc9dKMjOIqS/Pantry-AH---App-Components?m=auto&node-id=0-1&t=gP5d1agpvrdGCTnm-1" class="platform-link" target="_blank">❖ Web Library</a>
+                        <a href="https://www.figma.com/design/OK6sqz0WwDZuc9dKMjOIqS/Pantry-AH---App-Components?m=auto&node-id=0-1&t=gP5d1agpvrdGCTnm-1" class="platform-link" target="_blank">❖ EX Library</a>
+                        <a href="https://www.figma.com/design/OK6sqz0WwDZuc9dKMjOIqS/Pantry-AH---App-Components?m=auto&node-id=0-1&t=gP5d1agpvrdGCTnm-1" class="platform-link" target="_blank">❖ Icon Library</a>
+                        <a href="https://www.figma.com/design/OK6sqz0WwDZuc9dKMjOIqS/Pantry-AH---App-Components?m=auto&node-id=0-1&t=gP5d1agpvrdGCTnm-1" class="platform-link" target="_blank">❖ Asset Library</a>
+                    </div>
+                </div>
+                <div class="tasks-container">
+                    <div class="task-category">
+                        <div class="category-title">Foundation</div>
+                        <div class="task-item not-started" data-platform="figma">
+                            <input type="checkbox" class="task-checkbox" onchange="updateTaskStatus(this)">
+                            <div class="task-text">Merge branches after changes and peer-review</div>
+                        </div>
+                        <div class="task-item not-started" data-platform="figma" data-depends="0">
+                            <input type="checkbox" class="task-checkbox" onchange="updateTaskStatus(this)">
+                            <div class="task-text">Publish the new/updated foundations</div>
+                        </div>
+                        <div class="dependency-note">⚠️ Depends on: Foundation branch merge</div>
+                    </div>
+                    
+                    <div class="task-category">
+                        <div class="category-title">Components</div>
+                        <div class="task-item not-started" data-platform="figma" data-depends="1">
+                            <input type="checkbox" class="task-checkbox" onchange="updateTaskStatus(this)">
+                            <div class="task-text">Update components with the updated foundation</div>
+                        </div>
+                        <div class="dependency-note">⚠️ Depends on: Foundation publishing</div>
+                        <div class="task-item not-started" data-platform="figma">
+                            <input type="checkbox" class="task-checkbox" onchange="updateTaskStatus(this)">
+                            <div class="task-text">Merge branches after changes and peer-review</div>
+                        </div>
+                        <div class="task-item not-started" data-platform="figma" data-depends="3">
+                            <input type="checkbox" class="task-checkbox" onchange="updateTaskStatus(this)">
+                            <div class="task-text">Publish the new/updated components</div>
+                        </div>
+                        <div class="dependency-note">⚠️ Depends on: Component branch merge</div>
+                    </div>
+                    
+                    <div class="task-category">
+                        <div class="category-title">Assets & Icons</div>
+                        <div class="task-item not-started" data-platform="figma">
+                            <input type="checkbox" class="task-checkbox" onchange="updateTaskStatus(this)">
+                            <div class="task-text">Publish the updated/new illustrations</div>
+                        </div>
+                        <div class="task-item not-started" data-platform="figma">
+                            <input type="checkbox" class="task-checkbox" onchange="updateTaskStatus(this)">
+                            <div class="task-text">Publish the updated/new icons</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ZeroHeight Section -->
+            <div class="platform-section">
+                <div class="platform-header">
+                    <div class="platform-title"><img src="zeroheight.png" alt="book"/>ZeroHeight</div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="zeroheight-progress"></div>
+                        </div>
+                        <div class="progress-text" id="zeroheight-percentage">0%</div>
+                        <a href="https://zeroheight.com/6d94170d9/v/48230/p/41c5a3-status" class="platform-link" target="_blank">Open ZeroHeight</a>
+                    </div>
+                </div>
+                <div class="tasks-container">
+                    <div class="task-category">
+                        <div class="category-title">Documentation Updates</div>
+                        <div class="task-item not-started" data-platform="zeroheight" data-depends="1">
+                            <input type="checkbox" class="task-checkbox" onchange="updateTaskStatus(this)">
+                            <div class="task-text">Sync the new foundations with ZeroHeight Variables plugin</div>
+                        </div>
+                        <div class="dependency-note">⚠️ Depends on: Figma foundation publishing</div>
+                        <div class="task-item not-started" data-platform="zeroheight" data-depends="4">
+                            <input type="checkbox" class="task-checkbox" onchange="updateTaskStatus(this)">
+                            <div class="task-text">Update the component documentation</div>
+                        </div>
+                        <div class="dependency-note">⚠️ Depends on: Figma component publishing</div>
+                        <div class="task-item not-started" data-platform="zeroheight" data-depends="6">
+                            <input type="checkbox" class="task-checkbox" onchange="updateTaskStatus(this)">
+                            <div class="task-text">Update the icons</div>
+                        </div>
+                        <div class="dependency-note">⚠️ Depends on: Figma icon publishing</div>
+                        <div class="task-item not-started" data-platform="zeroheight" data-depends="5">
+                            <input type="checkbox" class="task-checkbox" onchange="updateTaskStatus(this)">
+                            <div class="task-text">Update the illustrations</div>
+                        </div>
+                        <div class="dependency-note">⚠️ Depends on: Figma illustration publishing</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- GitHub Section -->
+            <div class="platform-section">
+                <div class="platform-header">
+                    <div class="platform-title"><img src="github.png" alt="book"/>GitHub</div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="github-progress"></div>
+                        </div>
+                        <div class="progress-text" id="github-percentage">0%</div>
+                        <a href="https://github.com/RoyalAholdDelhaize/design-system-figma-tokens" class="platform-link" target="_blank">Open GitHub</a>
+                    </div>
+                </div>
+                <div class="tasks-container">
+                    <div class="task-category">
+                        <div class="category-title">Code & Documentation</div>
+                        <div class="task-item not-started" data-platform="github">
+                            <input type="checkbox" class="task-checkbox" onchange="updateTaskStatus(this)">
+                            <div class="task-text">Update the CHANGELOG for each branch</div>
+                        </div>
+                        <div class="task-item not-started" data-platform="github" data-depends="11">
+                            <input type="checkbox" class="task-checkbox" onchange="updateTaskStatus(this)">
+                            <div class="task-text">Merge branches that have been reviewed and checked</div>
+                        </div>
+                        <div class="dependency-note">⚠️ Depends on: CHANGELOG updates</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Teams Section -->
+            <div class="platform-section">
+                <div class="platform-header">
+                    <div class="platform-title"><img src="Teams.svg" alt="book"/>Microsoft Teams</div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="teams-progress"></div>
+                        </div>
+                        <div class="progress-text" id="teams-percentage">0%</div>
+                        <a href="https://aholddelhaize-my.sharepoint.com/personal/pnl0kr80_emea_royalahold_net/_layouts/15/Doc.aspx?sourcedoc={4f11c3f0-8774-4cdb-b4d3-69dca7ece7c0}&action=edit&wd=target%28Weekly%20release.one%7C1e4a32ec-bae5-4c24-8536-06b769bf8925%2F%F0%9F%92%A0%20Release%20April%2C%20Week%2025%7Cfb892dbe-2a79-4260-9f8f-862b7af8cabd%2F%29&wdorigin=NavigationUrl" class="platform-link" target="_blank">Sharepoint</a>
+                        <a href="https://teams.microsoft.com/l/channel/19%3A2dcf8a45ba8e452ba7c68e0cc67d8c95%40thread.tacv2/Pantry%20Weekly%20Design%20Release?groupId=54a5007c-2483-44a1-8363-d8f5ec713399&tenantId=a6b169f1-592b-4329-8f33-8db8903003c7" class="platform-link" target="_blank">Open Teams</a>
+                    </div>
+                </div>
+                <div class="tasks-container">
+                    <div class="task-category">
+                        <div class="category-title">Communication</div>
+                        <div class="task-item not-started" data-platform="teams" data-depends="4">
+                            <input type="checkbox" class="task-checkbox" onchange="updateTaskStatus(this)">
+                            <div class="task-text">Write down component changes</div>
+                        </div>
+                        <div class="dependency-note">⚠️ Depends on: Component publishing in Figma</div>
+                        <div class="task-item not-started" data-platform="teams" data-depends="1">
+                            <input type="checkbox" class="task-checkbox" onchange="updateTaskStatus(this)">
+                            <div class="task-text">Write down foundation changes</div>
+                        </div>
+                        <div class="dependency-note">⚠️ Depends on: Foundation publishing in Figma</div>
+                        <div class="task-item not-started" data-platform="teams" data-depends="5">
+                            <input type="checkbox" class="task-checkbox" onchange="updateTaskStatus(this)">
+                            <div class="task-text">Write down asset changes</div>
+                        </div>
+                        <div class="dependency-note">⚠️ Depends on: Asset publishing in Figma</div>
+                        <div class="task-item not-started" data-platform="teams" data-depends="6">
+                            <input type="checkbox" class="task-checkbox" onchange="updateTaskStatus(this)">
+                            <div class="task-text">Write down icon changes</div>
+                        </div>
+                        <div class="dependency-note">⚠️ Depends on: Icon publishing in Figma</div>
+                    </div>
+                    <div class="task-category">
+                        <div class="category-title">Release Notes</div>
+                        <div class="notes-container">
+                            <label for="teams-notes" class="notes-label">✏️ Notes for Teams Post:</label>
+                            <textarea 
+                                id="teams-notes" 
+                                type="text"
+                                class="notes-field" 
+                                placeholder="Add notes about changes, highlights, or important updates to include in the Teams post..."
+                                rows="4"
+                                oninput="saveNotesState()"
+                            ></textarea>
+                        </div>
+                    </div>
+                    <a href="https://stackedit.io/app#" class="platform-link" target="_blank">Open StackEdit</a>
+
+                </div>
+            </div>
+
+            <div class="status-legend">
+                <div class="legend-item">
+                    <div class="legend-color not-started"></div>
+                    <span>Not Started</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color in-progress"></div>
+                    <span>In Progress</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color completed"></div>
+                    <span>Completed</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color blocked"></div>
+                    <span>Blocked/Waiting</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+<script>
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            updateWeekNumber();
+            loadDashboardState();
+            loadNotesState();
+            updateAllProgress();
+            checkDependencies();
+        });
+        
+        function updateWeekNumber() {
+            const now = new Date();
+            const startOfYear = new Date(now.getFullYear(), 0, 1);
+            const days = Math.floor((now - startOfYear) / (24 * 60 * 60 * 1000));
+            const weekNumber = Math.ceil((days + startOfYear.getDay() + 1) / 7);
+            
+            document.getElementById('current-week').textContent = weekNumber;
+            document.getElementById('current-year').textContent = now.getFullYear();
+        }
+        
+        function updateTaskStatus(checkbox) {
+            const taskItem = checkbox.closest('.task-item');
+            const wasCompleted = taskItem.classList.contains('completed');
+            
+            // Remove all status classes
+            taskItem.classList.remove('not-started', 'in-progress', 'completed');
+            
+            if (checkbox.checked) {
+                taskItem.classList.add('completed');
+            } else {
+                // If unchecking a completed task, set to in-progress if it was previously completed
+                if (wasCompleted) {
+                    taskItem.classList.add('in-progress');
+                } else {
+                    taskItem.classList.add('not-started');
+                }
+            }
+            
+            updateAllProgress();
+            checkDependencies();
+            saveDashboardState();
+        }
+        
+        // Allow clicking task item to cycle through statuses
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('task-item') || e.target.classList.contains('task-text')) {
+                const taskItem = e.target.classList.contains('task-item') ? e.target : e.target.closest('.task-item');
+                const checkbox = taskItem.querySelector('.task-checkbox');
+                
+                if (taskItem.classList.contains('blocked')) return; // Don't allow status change for blocked items
+                
+                // Cycle through statuses: not-started -> in-progress -> completed -> not-started
+                if (taskItem.classList.contains('not-started')) {
+                    taskItem.classList.remove('not-started');
+                    taskItem.classList.add('in-progress');
+                    checkbox.checked = false;
+                } else if (taskItem.classList.contains('in-progress')) {
+                    taskItem.classList.remove('in-progress');
+                    taskItem.classList.add('completed');
+                    checkbox.checked = true;
+                } else if (taskItem.classList.contains('completed')) {
+                    taskItem.classList.remove('completed');
+                    taskItem.classList.add('not-started');
+                    checkbox.checked = false;
+                }
+                
+                updateAllProgress();
+                checkDependencies();
+                saveDashboardState();
+            }
+        });
+        
+        function updateAllProgress() {
+            const platforms = ['figma', 'zeroheight', 'github', 'teams'];
+            
+            platforms.forEach(platform => {
+                const tasks = document.querySelectorAll(`[data-platform="${platform}"]`);
+                const completed = document.querySelectorAll(`[data-platform="${platform}"].completed`).length;
+                const percentage = tasks.length > 0 ? Math.round((completed / tasks.length) * 100) : 0;
+                
+                const progressFill = document.getElementById(`${platform}-progress`);
+                const progressText = document.getElementById(`${platform}-percentage`);
+                
+                if (progressFill && progressText) {
+                    progressFill.style.width = percentage + '%';
+                    progressText.textContent = percentage + '%';
+                }
+            });
+        }
+        
+        function checkDependencies() {
+            const allTasks = document.querySelectorAll('.task-item');
+            
+            allTasks.forEach((task, index) => {
+                const dependsOn = task.getAttribute('data-depends');
+                
+                if (dependsOn) {
+                    const dependencyIndex = parseInt(dependsOn);
+                    const dependencyTask = allTasks[dependencyIndex];
+                    
+                    if (dependencyTask && !dependencyTask.classList.contains('completed')) {
+                        // Block this task
+                        task.classList.remove('not-started', 'in-progress');
+                        task.classList.add('blocked');
+                        task.querySelector('.task-checkbox').disabled = true;
+                    } else {
+                        // Unblock this task
+                        if (task.classList.contains('blocked')) {
+                            task.classList.remove('blocked');
+                            task.classList.add('not-started');
+                            task.querySelector('.task-checkbox').disabled = false;
+                        }
+                    }
+                }
+            });
+        }
+        
+        function resetDashboard() {
+            if (confirm('Are you sure you want to reset all tasks for a new release? This will clear all progress.')) {
+                const allTasks = document.querySelectorAll('.task-item');
+                const allCheckboxes = document.querySelectorAll('.task-checkbox');
+                
+                allTasks.forEach(task => {
+                    task.classList.remove('completed', 'in-progress', 'blocked');
+                    task.classList.add('not-started');
+                });
+                
+                allCheckboxes.forEach(checkbox => {
+                    checkbox.checked = false;
+                    checkbox.disabled = false;
+                });
+                
+                // Clear notes field
+                const notesField = document.getElementById('teams-notes');
+                if (notesField) {
+                    notesField.value = '';
+                }
+                
+                updateAllProgress();
+                checkDependencies();
+                saveDashboardState();
+                
+                // Update week number in case it's a new week
+                updateWeekNumber();
+            }
+        }
+        
+        function saveNotesState() {
+            const notesField = document.getElementById('teams-notes');
+            if (notesField) {
+                // Store notes in memory
+                window.teamsNotes = notesField.value;
+            }
+        }
+        
+        function loadNotesState() {
+            const notesField = document.getElementById('teams-notes');
+            if (notesField && window.teamsNotes) {
+                notesField.value = window.teamsNotes;
+            }
+        }
+        
+        function saveDashboardState() {
+            const state = {};
+            const allTasks = document.querySelectorAll('.task-item');
+            
+            allTasks.forEach((task, index) => {
+                const status = task.classList.contains('completed') ? 'completed' : 
+                             task.classList.contains('in-progress') ? 'in-progress' : 
+                             task.classList.contains('blocked') ? 'blocked' : 'not-started';
+                const isChecked = task.querySelector('.task-checkbox').checked;
+                
+                state[index] = { status, isChecked };
+            });
+            
+            // Store in memory instead of localStorage
+            window.dashboardState = state;
+        }
+        
+        function loadDashboardState() {
+            // Load from memory instead of localStorage
+            const state = window.dashboardState;
+            if (!state) return;
+            
+            const allTasks = document.querySelectorAll('.task-item');
+            
+            allTasks.forEach((task, index) => {
+                if (state[index]) {
+                    const { status, isChecked } = state[index];
+                    
+                    task.classList.remove('completed', 'in-progress', 'blocked', 'not-started');
+                    task.classList.add(status);
+                    task.querySelector('.task-checkbox').checked = isChecked;
+                }
+            });
+        }
+    </script>
+
+    </body>
+</html>

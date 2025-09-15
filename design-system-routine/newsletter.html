@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pantry Design System Newsletter - June Edition</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        
+        .newsletter-container {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .logo-placeholder {
+            background-color: rgba(255,255,255,0.2);
+            border: 2px dashed rgba(255,255,255,0.5);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            color: rgba(255,255,255,0.8);
+            font-style: italic;
+        }
+        
+        .header h1 {
+            margin: 0 0 10px 0;
+            font-size: 24px;
+            font-weight: 600;
+        }
+        
+        .edition {
+            font-size: 18px;
+            font-style: italic;
+            opacity: 0.9;
+            margin: 0;
+        }
+        
+        .content {
+            padding: 30px 20px;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .accessibility-banner {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .accessibility-banner p {
+            margin: 0;
+            font-weight: 500;
+        }
+        
+        .accessibility-banner a {
+            color: #fff;
+            text-decoration: underline;
+        }
+        
+        .demo-section {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .image-placeholder {
+            background-color: #e9ecef;
+            border: 2px dashed #adb5bd;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #6c757d;
+            font-style: italic;
+            margin: 15px 0;
+        }
+        
+        .matrix-section {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .matrix-section h3 {
+            margin: 0 0 10px 0;
+            color: #d63031;
+        }
+        
+        .design-update {
+            background-color: #e8f5e8;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #00b894;
+        }
+        
+        .articles-section {
+            background-color: #f0f8ff;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        
+        .articles-section h3 {
+            color: #0984e3;
+            margin-top: 0;
+        }
+        
+        .article {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .article:last-child {
+            border-bottom: none;
+        }
+        
+        .article-title {
+            font-weight: 600;
+            color: #2d3436;
+        }
+        
+        .article-description {
+            color: #636e72;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .quote {
+            background-color: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 30px 0;
+            font-style: italic;
+            color: #495057;
+            text-align: center;
+        }
+        
+        .footer {
+            background-color: #2d3436;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .footer a {
+            color: #74b9ff;
+            text-decoration: none;
+        }
+        
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .footer-links {
+            margin-top: 15px;
+        }
+        
+        .footer-links > div {
+            margin-bottom: 8px;
+        }
+        
+        strong {
+            color: #2d3436;
+        }
+        
+        .emoji {
+            font-size: 1.2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="newsletter-container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo-placeholder">
+                {Placeholder logo}
+            </div>
+            <h1>Your monthly dose of Pantry Design System updates!</h1>
+            <p class="edition">June edition</p>
+        </div>
+        
+        <!-- Content -->
+        <div class="content">
+            <!-- Accessibility Banner -->
+            <div class="accessibility-banner">
+                <p><strong>The European Accessibility Act is around the corner!</strong> Albert Heijn is getting ready for it, and Pantry is supporting along the way. Find out more at <a href="https://design.ah.nl/accessibility">design.ah.nl/accessibility</a>.</p>
+            </div>
+            
+            <!-- Demo Section -->
+            <div class="section">
+                <div class="demo-section">
+                    <div class="image-placeholder">
+                        {Placeholder image}
+                    </div>
+                    <p>During this month's demo, Pavel shared all Flutter components available in the experimental library, Levgen demo-ed the Quick filter for Android, Vitalii presented the Filter group and Category card horizontal for iOS. We also shared some general updates on Adoption and Contribution to the system, and showed the current component in design and development.</p>
+                </div>
+            </div>
+            
+            <!-- Accessibility Matrix -->
+            <div class="section">
+                <div class="matrix-section">
+                    <h3><strong>Accessibility matrix</strong></h3>
+                    <p>A quick guide to help you focus on impact <span class="emoji">🚀</span></p>
+                    <div class="image-placeholder">
+                        {Placeholder image}
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Design Update -->
+            <div class="section">
+                <div class="design-update">
+                    <h3><strong>Design update</strong></h3>
+                    <p>Main updates and new components</p>
+                    <div class="image-placeholder">
+                        {Placeholder image}
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Top Articles -->
+            <div class="section">
+                <div class="articles-section">
+                    <h3><span class="emoji">🌍</span> <strong>Top 3 articles from the Design Community</strong></h3>
+                    
+                    <div class="article">
+                        <div class="article-title"><span class="emoji">🧩</span> <strong>Design Systems Are for People – Brad Frost</strong></div>
+                        <div class="article-description">A reminder that systems serve humans, not the other way around</div>
+                    </div>
+                    
+                    <div class="article">
+                        <div class="article-title"><span class="emoji">🧱</span> <strong>DesignOps: 5 Common Team Structures</strong></div>
+                        <div class="article-description">Optimizing people/processes/craft to amplify design's value and impact at scale.</div>
+                    </div>
+                    
+                    <div class="article">
+                        <div class="article-title"><span class="emoji">⚙️</span> <strong>Specifics of UX/UI processes for B2B and B2C business</strong></div>
+                        <div class="article-description">Things to consider for CX and EX success.</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quote -->
+            <div class="quote">
+                <p><em>"Supporting our digital creators through a foundation of validated standards and components for each initiative, building an excellent omnichannel brand."</em></p>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-links">
+                <div>Visit Pantry Design System at <a href="https://design.ah.nl">design.ah.nl</a></div>
+                <div>Reach out to our team at @Teamchannel AskPantry</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

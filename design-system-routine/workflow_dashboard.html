@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pantry Design System Workflow Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .dashboard {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            color: white;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4);
+            background-size: 300% 100%;
+            animation: gradientShift 3s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .design-system { background: linear-gradient(135deg, #667eea, #764ba2); }
+        .cx { background: linear-gradient(135deg, #f093fb, #f5576c); }
+        .ex { background: linear-gradient(135deg, #4facfe, #00f2fe); }
+        .platforms { background: linear-gradient(135deg, #43e97b, #38f9d7); }
+
+        .card h2 {
+            font-size: 1.4rem;
+            color: #2d3748;
+            font-weight: 600;
+        }
+
+        .card-content {
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
+        .link-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            margin: 8px 0;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 10px;
+            text-decoration: none;
+            color: #4c51bf;
+            transition: all 0.2s ease;
+            border-left: 3px solid #6366f1;
+        }
+
+        .link-item:hover {
+            background: rgba(99, 102, 241, 0.2);
+            transform: translateX(5px);
+        }
+
+        .link-icon {
+            margin-right: 10px;
+            font-size: 1.1rem;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-left: 10px;
+        }
+
+        .active { background: #d4edda; color: #155724; }
+        .pending { background: #fff3cd; color: #856404; }
+        .coming-soon { background: #f8d7da; color: #721c24; }
+
+        .platform-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .platform-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: rgba(67, 233, 123, 0.1);
+            border-radius: 12px;
+            text-decoration: none;
+            color: #065f46;
+            transition: all 0.2s ease;
+            border: 2px solid transparent;
+        }
+
+        .platform-item:hover {
+            border-color: #10b981;
+            background: rgba(67, 233, 123, 0.2);
+        }
+
+        .platform-item.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: rgba(156, 163, 175, 0.1);
+            color: #6b7280;
+        }
+
+        .platform-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 12px;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            background: rgba(16, 185, 129, 0.2);
+        }
+
+        .disabled .platform-icon {
+            background: rgba(156, 163, 175, 0.2);
+        }
+
+        .last-updated {
+            margin-top: 30px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .platform-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="header">
+            <h1>🥫 Pantry Design System</h1>
+            <p>Comprehensive workflow dashboard for all Pantry components and platforms</p>
+        </div>
+
+        <div class="grid">
+            <!-- General Design System -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon design-system">🎨</div>
+                    <h2>General Pantry Design System</h2>
+                </div>
+                <div class="card-content">
+                    <a href="https://design.ah.nl/" class="link-item" target="_blank">
+                        <span class="link-icon">🌐</span>
+                        <div>
+                            <strong>Source of Truth</strong>
+                            <div style="font-size: 0.9rem; opacity: 0.8;">design.ah.nl</div>
+                        </div>
+                        <span class="status-badge active">Live</span>
+                    </a>
+                    <div class="link-item" style="opacity: 0.8; cursor: default;">
+                        <span class="link-icon">🤝</span>
+                        <div>
+                            <strong>Contribution</strong>
+                            <div style="font-size: 0.9rem; opacity: 0.8;">Pantry System Contribution</div>
+                        </div>
+                        <span class="status-badge active">Active</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pantry CX -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon cx">👥</div>
+                    <h2>Pantry CX</h2>
+                </div>
+                <div class="card-content">
+                    <a href="https://jira-eu-aholddelhaize.atlassian.net/browse/CCG-4054" class="link-item" target="_blank">
+                        <span class="link-icon">📋</span>
+                        <div>
+                            <strong>Template Contribution Story</strong>
+                            <div style="font-size: 0.9rem; opacity: 0.8;">CCG-4054</div>
+                        </div>
+                        <span class="status-badge pending">In Progress</span>
+                    </a>
+                    <a href="https://jira-eu-aholddelhaize.atlassian.net/jira/software/c/projects/CCG/boards/8088" class="link-item" target="_blank">
+                        <span class="link-icon">📊</span>
+                        <div>
+                            <strong>Jira Board</strong>
+                            <div style="font-size: 0.9rem; opacity: 0.8;">CCG Project Board</div>
+                        </div>
+                        <span class="status-badge active">Active</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Pantry EX -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon ex">👨‍💻</div>
+                    <h2>Pantry EX</h2>
+                </div>
+                <div class="card-content">
+                    <div class="link-item" style="opacity: 0.8; cursor: default;">
+                        <span class="link-icon">🔄</span>
+                        <div>
+                            <strong>EX Component Meeting</strong>
+                            <div style="font-size: 0.9rem; opacity: 0.8;">🅿️ Pantry EX Components 2025-01-21.loop</div>
+                        </div>
+                        <span class="status-badge active">Scheduled</span>
+                    </div>
+                    <a href="https://jira-eu-aholddelhaize.atlassian.net/jira/software/c/projects/TNLUX/boards/7964" class="link-item" target="_blank">
+                        <span class="link-icon">📊</span>
+                        <div>
+                            <strong>Jira Board</strong>
+                            <div style="font-size: 0.9rem; opacity: 0.8;">TNLUX Project Board</div>
+                        </div>
+                        <span class="status-badge active">Active</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Platform Galleries -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon platforms">🚀</div>
+                    <h2>Platform Galleries</h2>
+                </div>
+                <div class="card-content">
+                    <div class="platform-grid">
+                        <a href="https://design-system-pantry-web-tst.kaas.nonprd.k8s.ah.technology/" class="platform-item" target="_blank">
+                            <div class="platform-icon">🌐</div>
+                            <div>
+                                <strong>Web</strong>
+                                <div style="font-size: 0.8rem; opacity: 0.8;">Test Environment</div>
+                            </div>
+                        </a>
+                        <a href="https://design-system-pantry-flutter.kaas.prd.k8s.ah.technology/" class="platform-item" target="_blank">
+                            <div class="platform-icon">📱</div>
+                            <div>
+                                <strong>Flutter</strong>
+                                <div style="font-size: 0.8rem; opacity: 0.8;">Production</div>
+                            </div>
+                        </a>
+                        <a href="https://reimagined-doodle-ory1nwn.pages.github.io/" class="platform-item" target="_blank">
+                            <div class="platform-icon">🤖</div>
+                            <div>
+                                <strong>Android</strong>
+                                <div style="font-size: 0.8rem; opacity: 0.8;">GitHub Pages</div>
+                            </div>
+                        </a>
+                        <div class="platform-item disabled">
+                            <div class="platform-icon">🍎</div>
+                            <div>
+                                <strong>iOS</strong>
+                                <div style="font-size: 0.8rem; opacity: 0.8;">Coming Soon</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="last-updated">
+            <p>Dashboard last updated: June 24, 2025</p>
+        </div>
+    </div>
+
+    <script>
+        // Add some interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add click animation to cards
+            const cards = document.querySelectorAll('.card');
+            cards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    if (e.target.closest('.link-item') || e.target.closest('.platform-item')) {
+                        return; // Don't animate if clicking on a link
+                    }
+                    
+                    this.style.transform = 'scale(0.98)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                });
+            });
+
+            // Status indicator updates
+            const statusBadges = document.querySelectorAll('.status-badge');
+            statusBadges.forEach(badge => {
+                if (badge.textContent === 'Active' || badge.textContent === 'Live') {
+                    badge.style.animation = 'pulse 2s infinite';
+                }
+            });
+        });
+
+        // Add pulse animation for active status
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes pulse {
+                0%, 100% { opacity: 1; }
+                50% { opacity: 0.7; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
