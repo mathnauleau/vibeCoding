@@ -25,3 +25,9 @@ Here is what to run in the CLI to execute and run the script:
 chmod +x job_automation.sh
 ./job_automation.sh "Apple Inc" "iOS Developer" "Cupertino, CA" "https://apple.com"
 ```
+
+## Next step, once the script ran:
+1. Edit the resume and cover letter 
+2. Update the Keynote presentation
+3. Review the company research notes
+4. Update the Notion entry with additional details
