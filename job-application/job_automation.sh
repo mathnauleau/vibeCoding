@@ -38,7 +38,7 @@ else
 fi
 
 # 2. Copy resume and cover letter
-echo "📄 Copying documents..."
+echo "✎ Copying documents..."
 
 if [ -f "$RESUME_TEMPLATE" ]; then
     cp "$RESUME_TEMPLATE" "$COMPANY_FOLDER/resume_${COMPANY_NAME// /_}.pdf"
@@ -55,7 +55,7 @@ else
 fi
 
 # 3. Copy Keynote presentation
-echo "🎯 Copying Keynote presentation..."
+echo "✎ Copying Keynote presentation..."
 
 if [ -f "$KEYNOTE_TEMPLATE" ]; then
     cp -r "$KEYNOTE_TEMPLATE" "$COMPANY_FOLDER/presentation_${COMPANY_NAME// /_}.key"
@@ -65,7 +65,7 @@ else
 fi
 
 # 4. Add entry to Notion (requires valid API key and database ID)
-echo "📝 Adding entry to Notion..."
+echo "✎ Adding entry to Notion..."
 
 if [ "$NOTION_API_KEY" != "your_notion_api_key_here" ] && [ "$NOTION_DATABASE_ID" != "your_notion_database_id_here" ]; then
     NOTION_PAYLOAD=$(cat <<EOF
@@ -134,7 +134,7 @@ else
 fi
 
 # 5. Generate company research file using ChatGPT
-echo "🔍 Generating company research..."
+echo "✎ Generating company research..."
 
 if [ "$OPENAI_API_KEY" != "your_openai_api_key_here" ] && [ -n "$WEBSITE" ]; then
     RESEARCH_PROMPT="Provide a brief company research summary for $COMPANY_NAME. Include: company size, main products/services, recent news, company culture, and key facts that would be useful for a job interview. Keep it concise and factual."
