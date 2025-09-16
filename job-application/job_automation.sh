@@ -8,7 +8,7 @@ BASE_FOLDER="$HOME/Work/09_Portfolio 2025/Companies"
 RESUME_TEMPLATE="$HOME/Work/CV/EN_resume.pdf"
 COVER_LETTER_TEMPLATE="$HOME/Work/CV/EN_motivation.pdf"
 KEYNOTE_TEMPLATE="$HOME/Work/CV/Slideshow_template.key"
-NOTION_API_KEY="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" # https://www.notion.so/profile/integrations
+NOTION_API_KEY="notion_API_ID" # https://www.notion.so/profile/integrations
 NOTION_DATABASE_ID="your_notion_database_id_here" # https://api.notion.com/v1/databases/{database_id}
 OPENAI_API_KEY="your_openai_api_key_here" # https://help.openai.com/en/articles/4936850-where-do-i-find-my-openai-api-key
 
@@ -67,7 +67,7 @@ fi
 # 4. Add entry to Notion (requires valid API key and database ID)
 echo "⏳ Adding entry to Notion..."
 
-if [ "$NOTION_API_KEY" != "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" ] && [ "$NOTION_DATABASE_ID" != "https://www.notion.so/mathieunauleau/dc44e63a5e1c42aaab9139f32504090c?v=522a3b43fa884a4893a15dc9c3fc6c0c" ]; then
+if [ "$NOTION_API_KEY" != "notion_API_ID" ] && [ "$NOTION_DATABASE_ID" != "Database_ID" ]; then
     NOTION_PAYLOAD=$(cat <<EOF
 {
   "parent": { "database_id": "$NOTION_DATABASE_ID" },
